@@ -1,0 +1,35 @@
+<form clrForm>
+    <clr-input-container>
+      <label>Title</label>
+      <input clrInput placeholder="Title" name="title" [(ngModel)]="form.title" required />
+    </clr-input-container>
+    <clr-textarea-container>
+        <label>Description</label>
+        <textarea clrTextarea name="description" placeholder="Write description here" 
+              rows="5" cols="39" class="description" [(ngModel)]="form.description"  required ></textarea>
+    </clr-textarea-container>
+    <clr-input-container>
+      <label for="thumbnail">Thumbnail</label>
+      <input clrInput placeholder="Enter image URL" name="image" 
+        id="thumbnail" [(ngModel)]="form.imageUrl" />
+    </clr-input-container>
+    <clr-input-container>
+        <label>Donation required</label>
+        <input clrInput placeholder="Donation required" name="donation" [(ngModel)]="form.moneyNeeded" />
+    </clr-input-container>
+    <clr-input-container>
+        <label>Volunteers required</label>
+        <input clrInput placeholder="Volunteers required" name="volunteers" [(ngModel)]="form.volunteersNeeded" />
+    </clr-input-container>
+    <div *ngIf="isInvalid">
+      <div class="alert alert-danger" id="error">
+        <div class="alert-item static">
+          <div class="alert-icon-wrapper">
+              <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
+          </div>
+          {{errorMessage}}
+        </div>
+      </div>
+    </div>
+    <button class="btn btn-success" id="update" (click)="onClick()">Update</button>
+  </form>

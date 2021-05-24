@@ -1,0 +1,37 @@
+<!--<form clrForm>
+    <clr-input-container>
+        <label>Username: </label>
+        <input clrInput type="text" name="username" placeholder="Username" required />
+    </clr-input-container>
+    <clr-input-container>
+        <label>Password: </label>
+        <input clrInput type="password" name="password" placeholder="Password" required />
+    </clr-input-container>
+</form>-->
+
+
+<div class="login-wrapper">
+    <form  class="login"  #login>
+        <section class="title">
+            <h3 class="welcome">Welcome to</h3>
+            Charity Hub
+        </section>
+        <div class="login-group">
+            <clr-input-container>
+                <label class="clr-sr-only">Username</label>
+                <input type="text" name="username" clrInput placeholder="Username"
+                  #username required [(ngModel)]="model.username" />
+            </clr-input-container>
+            <clr-password-container>
+                <label class="clr-sr-only">Password</label>
+                <input type="password" name="password" clrPassword placeholder="Password"
+                 #password required [(ngModel)]="model.password" />
+            </clr-password-container>
+            <div *ngIf="isError" class="error active">
+                {{errorMessage}}
+            </div>
+            <button type="submit" class="btn btn-primary"
+                (click)="onLogin()">LOGIN</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,86 @@
+<h1>{{currentCharity.title}}</h1>
+    <img [src]="currentCharity.imageUrl" alt="Something">
+<div class="clr-row">
+    <div class="clr-col-6">
+        <h3>{{currentCharity.description}}</h3>
+    </div>
+
+</div>
+<div class="clr-row">
+    <div class="clr-col-5">
+        <div *ngIf="currentCharity.volunteersNeeded != 0">
+            <div class="progress-block">
+                <label for="progressBarForVolunteer">{{currentCharity.volunteers}}</label>
+                <clr-progress-bar id="progressBarForVolunteer" clrValue="{{currentCharity.volunteers}}"
+                clrSuccess clrMax="{{currentCharity.volunteersNeeded}}"></clr-progress-bar>
+                <span>{{currentCharity.volunteersNeeded}}</span>
+            </div>
+        </div>
+        <div *ngIf="currentCharity.moneyNeeded != 0">
+            <div class="progress-block">
+                <label for="progressBarForMoney">{{currentCharity.moneyDonated}}$</label>
+                <clr-progress-bar id="progressBarForMoney" clrValue="{{currentCharity.moneyDonated}}"
+                                clrMax="{{currentCharity.moneyNeeded}}"></clr-progress-bar>
+                <span>{{currentCharity.moneyNeeded}}$</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div *ngIf='currentCharity.moneyNeeded!=0 && currentCharity.moneyNeeded > currentCharity.moneyDonated'>
+    <button type="button" class="btn btn-primary" (click)="checkForLogin('opened')"  id="help">
+        Donate
+     </button>
+</div>
+
+<clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
+        <h4 class="modal-title">How much do you want to donate?</h4>
+        <div class="modal-body">
+            <clr-input-container>
+               <input type="text" clrInput [(ngModel)]="amountToDonate" placeholder="0">
+            </clr-input-container>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="donation()">
+               Donate
+            </button>
+            <button type="button" class="btn btn-primary-outline" (click)="opened = false">
+                Cancel
+             </button>
+        </div>
+</clr-modal>
+
+<div *ngIf="currentCharity.volunteersNeeded !==0 && currentCharity.volunteersNeeded > currentCharity.volunteers">
+    <button type="button" class="btn btn-success" (click)="checkForLogin('vOpened')" id="help">
+        Volunteer
+     </button>
+</div>
+
+<clr-modal [(clrModalOpen)]="isVolunteerModalOpen" [clrModalClosable]="false">
+    <h4 class="modal-title">Are you sure you want to volunteer?</h4>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-success" (click)="volunteer()">
+           Volunteer
+        </button>
+        <button type="button" class="btn btn-warning-outline" (click)="isVolunteerModalOpen = false">
+            Cancel
+        </button>
+    </div>
+</clr-modal>
+
+<div *ngIf="currentCharity.creatorsUsername === userService.getCurrentUsername()">
+  <button type="button" class="btn btn-danger" id="help" (click)="deletion = true">Delete</button>
+  <button type="button" class="btn btn-info" id="help" (click)="edit()">Edit</button>
+</div>
+
+<clr-modal [(clrModalOpen)]="deletion" [clrModalClosable]="false">
+    <h4 class="modal-title">Are you sure that you want to delete this charity event?</h4>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-warning" (click)="delete()">
+           Delete
+        </button>
+        <button type="button" class="btn btn-success-outline" (click)="deletion = false">
+            Cancel
+         </button>
+    </div>
+  </clr-modal>

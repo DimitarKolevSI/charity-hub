@@ -1,0 +1,67 @@
+<div class="login-wrapper">
+    <form class="login">
+        <section class="title">
+            <h3 class="welcome">Signup and jump into the</h3>
+            CharityHub
+        </section>
+        <div class="login-group">
+            <clr-input-container>
+                <label class="clr-sr-only">Username</label>
+                <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username" required />
+            </clr-input-container>
+            <clr-password-container>
+                <label class="clr-sr-only">Password</label>
+                <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="form.password"  required />
+            </clr-password-container>
+            <clr-input-container>
+                <label class="clr-sr-only">First name</label>
+                <input type="text" name="firstName" clrInput placeholder="First name" [(ngModel)]="form.firstName" required />
+            </clr-input-container>
+            <clr-input-container>
+                <label class="clr-sr-only">Last name</label>
+                <input type="text" name="lastName" clrInput placeholder="Last name" [(ngModel)]="form.lastName" required />
+            </clr-input-container>
+            <div class="clr-row">
+                <div class="clr-col-3">
+                    <clr-input-container>
+                        <label class="clr-sr-only">Age</label>
+                        <input type="text" name="age" clrInput placeholder="Age" [(ngModel)]="form.age" required/>
+                    </clr-input-container>
+                </div>
+                <div class="clr-col-9">
+                    <clr-control-helper>You must be at least 16 years old to participate!</clr-control-helper>
+                </div>
+            </div>
+            <clr-radio-container clrInline>
+                <label>Please, select your gender:</label>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="gender" required value="Male" [(ngModel)]="form.gender"  />
+                  <label>Male</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                  <input type="radio" clrRadio name="gender" required value="Female" [(ngModel)]="form.gender" />
+                  <label>Female</label>
+                </clr-radio-wrapper>
+                <clr-radio-wrapper>
+                    <input type="radio" clrRadio name="gender" required value="Undefined" [(ngModel)]="form.gender" />
+                    <label>Prefer not to choose</label>
+                  </clr-radio-wrapper>
+                <clr-control-error>This field is required!</clr-control-error>
+            </clr-radio-container>
+
+            <clr-input-container>
+                <label class="clr-sr-only" for="location">Location(optional)</label>
+                <input type="text" name="location" id="location" clrInput placeholder="Location" [(ngModel)]="form.location" />
+            </clr-input-container>
+
+            <div *ngIf="isInvalid">
+                <div class="error active">
+                    {{errorMessage}}
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary" (click)="onClick()">SIGNUP</button>
+
+        </div>
+    </form>
+</div>
