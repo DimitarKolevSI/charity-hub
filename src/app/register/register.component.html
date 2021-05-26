@@ -6,25 +6,26 @@
         </section>
         <div class="login-group">
             <clr-input-container>
-                <label class="clr-sr-only">Username</label>
                 <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="form.username" required />
             </clr-input-container>
             <clr-password-container>
-                <label class="clr-sr-only">Password</label>
                 <input type="password" name="password" clrPassword placeholder="Password" [(ngModel)]="form.password"  required />
             </clr-password-container>
+            <clr-password-container>
+              <input type="password" name="confirmPassword" clrPassword placeholder="Confirm Password" [(ngModel)]="confirmPassword" required />
+            </clr-password-container>
             <clr-input-container>
-                <label class="clr-sr-only">First name</label>
+              <input type="email" name="email" clrInput placeholder="Email Address" [(ngModel)]="form.email" required />
+            </clr-input-container>
+            <clr-input-container>
                 <input type="text" name="firstName" clrInput placeholder="First name" [(ngModel)]="form.firstName" required />
             </clr-input-container>
             <clr-input-container>
-                <label class="clr-sr-only">Last name</label>
                 <input type="text" name="lastName" clrInput placeholder="Last name" [(ngModel)]="form.lastName" required />
             </clr-input-container>
             <div class="clr-row">
                 <div class="clr-col-3">
                     <clr-input-container>
-                        <label class="clr-sr-only">Age</label>
                         <input type="text" name="age" clrInput placeholder="Age" [(ngModel)]="form.age" required/>
                     </clr-input-container>
                 </div>
@@ -49,11 +50,6 @@
                 <clr-control-error>This field is required!</clr-control-error>
             </clr-radio-container>
 
-            <clr-input-container>
-                <label class="clr-sr-only" for="location">Location(optional)</label>
-                <input type="text" name="location" id="location" clrInput placeholder="Location" [(ngModel)]="form.location" />
-            </clr-input-container>
-
             <div *ngIf="isInvalid">
                 <div class="error active">
                     {{errorMessage}}
@@ -65,3 +61,16 @@
         </div>
     </form>
 </div>
+
+<clr-modal [(clrModalOpen)]="shouldOpenModal" [clrModalClosable]="false">
+  <h3 class="modal-title">Success</h3>
+  <section class="modal-body">
+    <p>
+      You have registered successfully! Welcome to the new network for giving called CharityHub! Login and dive through the
+      list of charities!
+    </p>
+  </section>
+  <footer class="modal-footer">
+    <button type="submit" class="btn btn-primary-outline" (click)="saveUser()">OK</button>
+  </footer>
+</clr-modal>

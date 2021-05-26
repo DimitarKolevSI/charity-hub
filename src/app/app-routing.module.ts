@@ -10,6 +10,9 @@ import { PageNotFoundComponent } from './page-not-found/page-not-found.component
 import { SearchPageComponent } from './search-page/search-page.component';
 import { EditCharityPageComponent } from './edit-charity-page/edit-charity-page.component';
 import {CharityRepositoryService} from './services/charity-repository.service';
+import {EditProfileComponent} from "./edit-profile/edit-profile.component";
+import {UserRepositoryService} from "./services/user-repository.service";
+import {User} from "./models/User";
 
 
 const routes: Routes = [
@@ -48,6 +51,10 @@ const routes: Routes = [
     {
       path: 'edit/:charityId',
       component: EditCharityPageComponent
+    },
+    {
+      path: 'edit-profile/:username',
+      component: EditProfileComponent
     },
     {
       path: '**',

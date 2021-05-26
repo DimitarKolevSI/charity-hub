@@ -13,7 +13,9 @@ export class RegisterComponent implements OnInit {
   public isInvalid: boolean = false;
   public errorMessage: string = '';
   public input: string;
-  form: User = new User();
+  public form: User = new User();
+  public confirmPassword: string = '';
+  public shouldOpenModal: boolean = false;
 
   constructor(private userRepositoryService: UserRepositoryService,
               public router: Router) {
@@ -24,9 +26,11 @@ export class RegisterComponent implements OnInit {
 
   onClick(): void {
     this.form.age = +this.form.age;
-    if (this.isValid()) {
-      this.userRepositoryService.addUser(this.form).subscribe(() => this.router.navigate(['/login']));
-    }
+    this.shouldOpenModal = this.isValid();
+  }
+
+  saveUser(): void {
+    this.userRepositoryService.addUser(this.form).subscribe(() => this.router.navigate(['/login']));
   }
 
   isValid(): boolean {
@@ -40,12 +44,14 @@ export class RegisterComponent implements OnInit {
       this.errorMessage = 'Username should be at least 6 symbols long!';
     } else if (!this.form.password.match(lettersAndNumbersCheck) || this.form.password.length < 8) {
       this.errorMessage = 'Password should contain only letters and numbers and should be at least 8 symbols!';
+    } else if (this.form.password !== this.confirmPassword) {
+      this.errorMessage = 'The two passwords must match!';
     } else if (!this.form.firstName.match(lettersCheck) && !this.form.lastName.match(lettersCheck)) {
       this.errorMessage = 'First and last name should contain only letters!';
     } else if (!this.form.age.toString().match(numbersCheck)) {
       this.errorMessage = 'Age should be a number!';
     } else if (this.form.age < 16) {
-      this.errorMessage = 'You should be at least 16 years old to registrate!';
+      this.errorMessage = 'You should be at least 16 years old to register!';
     } else if (this.form.gender !== 'Male' && this.form.gender !== 'Female' && this.form.gender !== 'Undefined') {
       this.errorMessage = 'Pick a gender!';
     } else {

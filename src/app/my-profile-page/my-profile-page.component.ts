@@ -25,7 +25,6 @@ export class MyProfilePageComponent implements OnInit {
 
   ngOnInit(): void {
     this.currentUsername = this.activatedRouter.snapshot.params.username;
-    console.log(this.currentUsername);
     this.userService.getUser(this.currentUsername).subscribe(
       (data: User) => this.user = data
     );

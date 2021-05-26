@@ -18,6 +18,8 @@ import { SearchPageComponent } from './search-page/search-page.component';
 import { CutPipePipe } from './cut-pipe.pipe';
 import { EditCharityPageComponent } from './edit-charity-page/edit-charity-page.component';
 import {CharityRepositoryService} from './services/charity-repository.service';
+import { EditProfileComponent } from './edit-profile/edit-profile.component';
+import {UserRepositoryService} from "./services/user-repository.service";
 
 @NgModule({
   declarations: [
@@ -32,7 +34,8 @@ import {CharityRepositoryService} from './services/charity-repository.service';
     MyProfilePageComponent,
     SearchPageComponent,
     CutPipePipe,
-    EditCharityPageComponent
+    EditCharityPageComponent,
+    EditProfileComponent
   ],
   imports: [
     BrowserModule,
@@ -45,4 +48,7 @@ import {CharityRepositoryService} from './services/charity-repository.service';
   providers: [CharityRepositoryService],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(userRepositoryService: UserRepositoryService) {
+  }
+}

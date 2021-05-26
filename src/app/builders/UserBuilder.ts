@@ -37,8 +37,8 @@ export class UserBuilder {
     return this;
   }
 
-  public withLocation(location: string): UserBuilder {
-    this.user.location = location;
+  public withEmail(location: string): UserBuilder {
+    this.user.email = location;
     return this;
   }
 

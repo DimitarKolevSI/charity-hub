@@ -9,7 +9,7 @@ import {Router} from '@angular/router';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  title = 'FinalTaskFrontEnd';
+  title = 'CharityHub';
   key: string = '';
   public currentUsername: string;
   public opened: boolean = false;
@@ -27,6 +27,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
+  goToHomepage(): void {
+    this.router.navigate(['/home']);
+  }
+
+  onRegister(): void {
+    this.router.navigate(['/register']);
+  }
+
+  onLogin(): void {
+    this.router.navigate(['/login']);
+  }
+
   logOut(): void {
     localStorage.setItem('username', '');
     this.opened = false;
@@ -36,6 +48,10 @@ export class AppComponent implements OnInit {
   onLogOut(): void {
     event.preventDefault();
     this.opened = true;
+  }
+
+  onEditProfile(): void {
+    this.router.navigate([`/edit-profile/${localStorage.getItem('username')}`]);
   }
 
 }

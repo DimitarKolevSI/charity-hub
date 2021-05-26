@@ -28,7 +28,6 @@ export class CreateCharityComponent implements OnInit {
 
   onClick() {
     event.preventDefault();
-    console.log(this.form.imageUrl);
     if (this.checkIfValid()) {
       this.charityService.createCharity(this.form).subscribe(
         () => this.router.navigate(['/home'])

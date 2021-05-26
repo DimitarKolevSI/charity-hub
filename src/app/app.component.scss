@@ -9,3 +9,12 @@
     right: 0;
     position: absolute;
 }
+
+#myProfile {
+  border-color: white;
+  color: white;
+}
+
+#myProfile:hover {
+  background: green;
+}

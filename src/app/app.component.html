@@ -1,39 +1,31 @@
 <div class="main-container">
   <header class="header header-6">
     <div class="branding">
-      <a href="/home" class="nav-link">
+      <a (click)="goToHomepage()" class="nav-link">
         <clr-icon shape="first-aid" [style.color]="'#ffffff'"></clr-icon>
         <span class="title">CharityHub</span>
       </a>
       <div class="buttons" *ngIf="userService.getCurrentUsername()===''">
-        <a href="/login" class="nav-link">
-          <button class="btn btn-success" id="login" >Login</button>
-        </a>
-        <a  href="/register" class="nav-link">
-          <button class="btn btn-success-outline" id="register">Register</button>
-        </a>
+        <button class="btn btn-success" id="login" (click)="onLogin()">Login</button>
+        <button class="btn btn-success-outline" id="register" (click)="onRegister()">Register</button>
       </div>
       <div class="loggedIn" *ngIf="userService.getCurrentUsername()!==''">
-        <a class="nav-link">
-          <button class="btn btn-success" id="logout" [routerLink]="['/profile',this.userService.getCurrentUsername()]" >
-            Hello, {{this.userService.getCurrentUsername()}}</button>
-        </a>
-        <a href="/create_charity" class="nav-link">
-          <button class="btn btn-success-outline" id="createCharity" >Create charity</button>
-        </a>
-        <a href="/home" class="nav-link">
-          <button class="btn btn-warning-outline" id="logout" (click)="onLogOut()" >Logout</button>
-        </a>
+        <button class="btn btn-info" id="myProfile" [routerLink]="['/profile',this.userService.getCurrentUsername()]">
+          My Activities
+        </button>
+        <button class="btn btn-primary" id="editProfile" (click)="onEditProfile()">Edit Profile</button>
+        <button class="btn btn-success" id="createCharity" [routerLink]="['/create_charity']">Create charity</button>
+        <button class="btn btn-warning" id="logout" (click)="onLogOut()">Logout</button>
       </div>
       <clr-modal [(clrModalOpen)]="opened" [clrModalClosable]="false">
         <h4 class="modal-title">Do you want to logout? :(</h4>
         <div class="modal-footer">
-            <button type="button" class="btn btn-warning" (click)="logOut()">
-               Logout
-            </button>
-            <button type="button" class="btn btn-success-outline" (click)="opened = false">
-                Cancel
-             </button>
+          <button type="button" class="btn btn-warning" (click)="logOut()">
+            Logout
+          </button>
+          <button type="button" class="btn btn-success-outline" (click)="opened = false">
+            Cancel
+          </button>
         </div>
       </clr-modal>
 

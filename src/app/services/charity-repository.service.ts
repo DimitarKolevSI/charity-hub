@@ -1,9 +1,6 @@
 import {Injectable} from '@angular/core';
-import {Subject, Observable, of} from 'rxjs';
+import {Observable, of} from 'rxjs';
 import {Charity} from '../models/Charity';
-import {User} from '../models/User';
-import {HttpClient} from '@angular/common/http';
-import {log} from 'util';
 import {Donation} from '../models/Donation';
 
 @Injectable({
@@ -77,7 +74,6 @@ export class CharityRepositoryService {
         donation.amount = amount;
         charity.moneyDonated += amount;
         charity.donations.push(donation);
-        console.log(charity);
         return charity;
       }
     }

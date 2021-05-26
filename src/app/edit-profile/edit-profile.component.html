@@ -1,0 +1,40 @@
+<div class="login-wrapper">
+  <form  class="login"  #login>
+    <section class="title">
+      Edit Profile
+    </section>
+    <div class="login-group">
+      <clr-input-container>
+        <input type="text" name="username" clrInput placeholder="Username" [(ngModel)]="usernameForm"/>
+      </clr-input-container>
+      <clr-password-container>
+        <input type="password" name="oldPassword" clrPassword placeholder="Old Password" [(ngModel)]="oldPassword">
+      </clr-password-container>
+      <clr-password-container>
+        <input type="password" name="newPassword" clrPassword placeholder="New Password" [(ngModel)]="newPassword"/>
+      </clr-password-container>
+      <clr-password-container>
+        <input type="password" name="confirmNewPassword" clrPassword placeholder="Confirm New Password" [(ngModel)]="confirmNewPassword">
+      </clr-password-container>
+      <clr-input-container>
+        <input type="email" name="email" clrInput placeholder="Email" [(ngModel)]="email">
+      </clr-input-container>
+      <div *ngIf="isError" class="error active">
+        {{errorMessage}}
+      </div>
+      <button type="submit" class="btn btn-primary" (click)="onSaveChanges()">SAVE CHANGES</button>
+    </div>
+  </form>
+</div>
+
+<clr-modal [(clrModalOpen)]="shouldOpenModal" [clrModalClosable]="false">
+  <h3 class="modal-title">Success</h3>
+  <section class="modal-body">
+    <p>
+      Changes saved successfully
+    </p>
+  </section>
+  <footer class="modal-footer">
+    <button type="submit" class="btn btn-primary-outline" (click)="goToHomepage()">GO TO HOMEPAGE</button>
+  </footer>
+</clr-modal>
