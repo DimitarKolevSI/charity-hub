@@ -58,6 +58,8 @@ export class CharityRepositoryService {
 
   createCharity(charity: Charity): Observable<Charity> {
     charity.id = CharityRepositoryService.idCounter++;
+    charity.donations = [];
+    charity.volunteersUsernames = [];
     CharityRepositoryService.charities.push(charity);
     return of(charity);
   }
@@ -69,7 +71,7 @@ export class CharityRepositoryService {
   donate(amount: number, id: number): Charity {
     const donation: Donation = new Donation();
     for (const charity of CharityRepositoryService.charities) {
-      if (charity.id == id) {
+      if (charity.id === id) {
         donation.username = localStorage.getItem('username');
         donation.amount = amount;
         charity.moneyDonated += amount;
@@ -90,31 +92,57 @@ export class CharityRepositoryService {
   delete(id: number): Observable<Charity> {
     const charitiesById: Charity[] = CharityRepositoryService.charities.filter(charity => charity.id === id);
     const index: number = CharityRepositoryService.charities.indexOf(charitiesById[0], 0);
-    if (index > -1) {
-      CharityRepositoryService.charities = CharityRepositoryService.charities.splice(index, 1);
+    let charities: Charity[] = [];
+    for (let i = 0; i < CharityRepositoryService.charities.length; i++) {
+      if (index === i) {
+        continue;
+      }
+      charities = charities.concat([CharityRepositoryService.charities[i]]);
     }
+    CharityRepositoryService.charities = charities;
     return of(charitiesById[0]);
   }
 
   editCharity(id: number, charity: Charity): Observable<Charity> {
-    const charitiesById: Charity[] = CharityRepositoryService.charities.filter(c => c.id === id);
-    const index: number = CharityRepositoryService.charities.indexOf(charitiesById[0], 0);
+    let index = -1;
+    for (let i = 0; i < CharityRepositoryService.charities.length; i++) {
+      if (CharityRepositoryService.charities[i].id == id) {
+        index = i;
+        break;
+      }
+    }
     if (index > -1) {
+      if (!(+charity.volunteersNeeded)) {
+        charity.volunteers = 0;
+        charity.volunteersUsernames = [];
+      }
+      if (!(+charity.moneyNeeded)) {
+        charity.moneyDonated = 0;
+        charity.donations = [];
+      }
       CharityRepositoryService.charities[index] = charity;
     }
     return of(charity);
   }
 
   getAllCharitiesCreatedByUser(username: string): Observable<Charity[]> {
-    return of([new Charity()]);
+    return of(CharityRepositoryService.charities.filter(charity => charity.creatorsUsername === username));
   }
 
   getAllCharityInWhichUserHasDonated(username: string): Observable<Charity[]> {
-    return of([new Charity()]);
+    return of(CharityRepositoryService.charities.filter(charity => this.hasDonationByUser(charity, username)));
+  }
+
+  hasDonationByUser(charity: Charity, username: string): boolean {
+    return charity.donations.filter(donation => donation.username === username).length > 0;
   }
 
   getAllCharityInWhichUserHasParticipatedIn(username: string): Observable<Charity[]> {
-    return of([new Charity()]);
+    return of(CharityRepositoryService.charities.filter(charity => this.hasVolunteerByUsername(charity, username)));
+  }
+
+  hasVolunteerByUsername(charity: Charity, username: string): boolean {
+    return charity.volunteersUsernames.filter(user => user === username).length > 0;
   }
 
 }

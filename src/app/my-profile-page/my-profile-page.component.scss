@@ -1,7 +1,11 @@
 .card-img{
     width: 75%;
-    position: relative; 
+    position: relative;
     top: 50%;
+}
+
+.card-img img {
+  height: 200px;
 }
 
 img{
@@ -24,7 +28,7 @@ h2{
 
 #charities
 {
-  position: relative;  
+  position: relative;
   top: 50%;
   width: 50%;
   display:inline-block;

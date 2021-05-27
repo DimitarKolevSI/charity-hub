@@ -1,4 +1,4 @@
-<h1 class="names"> {{user.firstName}} {{user.lastName}}</h1>
+<h1 class="names"> Hello, {{user.firstName}} {{user.lastName}}</h1>
 
 <h1>My charities</h1>
 <hr>
@@ -7,7 +7,7 @@
     <div class="clr-row">
         <div class="clr-col-lg-6 clr-col-10">
             <a [routerLink]="['/charity',charity.id]" class="card clickable" >
-                <h2>{{charity.title}}</h2> 
+                <h2>{{charity.title}}</h2>
                 <div class="card-img">
                     <img [src]="charity.imageUrl">
                 </div>
@@ -18,7 +18,7 @@
                     <div *ngIf="charity.volunteersNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.volunteers}}</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}"
                                             clrMax="{{charity.volunteersNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.volunteersNeeded}}</span>
                         </div>
@@ -26,7 +26,7 @@
                     <div *ngIf="charity.moneyNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.moneyDonated}}$</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}"
                                             clrMax="{{charity.moneyNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.moneyNeeded}}$</span>
                         </div>
@@ -44,7 +44,7 @@
     <div class="clr-row">
         <div class="clr-col-lg-6 clr-col-10">
             <a [routerLink]="['/charity',charity.id]" class="card clickable" >
-                <h2>{{charity.title}}</h2> 
+                <h2>{{charity.title}}</h2>
                 <div class="card-img">
                     <img [src]="charity.imageUrl">
                 </div>
@@ -55,7 +55,7 @@
                     <div *ngIf="charity.volunteersNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.volunteers}}</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}"
                                             clrMax="{{charity.volunteersNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.volunteersNeeded}}</span>
                         </div>
@@ -63,7 +63,7 @@
                     <div *ngIf="charity.moneyNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.moneyDonated}}$</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}"
                                             clrMax="{{charity.moneyNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.moneyNeeded}}$</span>
                         </div>
@@ -81,7 +81,7 @@
     <div class="clr-row">
         <div class="clr-col-lg-6 clr-col-10">
             <a [routerLink]="['/charity',charity.id]" class="card clickable" >
-                <h2>{{charity.title}}</h2> 
+                <h2>{{charity.title}}</h2>
                 <div class="card-img">
                     <img [src]="charity.imageUrl">
                 </div>
@@ -92,7 +92,7 @@
                     <div *ngIf="charity.volunteersNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.volunteers}}</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.volunteers}}"
                                             clrMax="{{charity.volunteersNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.volunteersNeeded}}</span>
                         </div>
@@ -100,7 +100,7 @@
                     <div *ngIf="charity.moneyNeeded != 0">
                         <div class="progress-block">
                             <label for="demoProgressBar">{{charity.moneyDonated}}$</label>
-                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}" 
+                            <clr-progress-bar id="demoProgressBar" clrValue="{{charity.moneyDonated}}"
                                             clrMax="{{charity.moneyNeeded}}"></clr-progress-bar>
                             <span id="progress-bar">{{charity.moneyNeeded}}$</span>
                         </div>

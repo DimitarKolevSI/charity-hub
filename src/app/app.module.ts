@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http'
+import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ClarityModule } from '@clr/angular';
@@ -9,7 +9,6 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { CreateCharityComponent } from './create-charity/create-charity.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { CharityViewComponent } from './charity-view/charity-view.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { DetailCharityViewComponent } from './detail-charity-view/detail-charity-view.component';
 import { FormsModule } from '@angular/forms';
@@ -19,7 +18,7 @@ import { CutPipePipe } from './cut-pipe.pipe';
 import { EditCharityPageComponent } from './edit-charity-page/edit-charity-page.component';
 import {CharityRepositoryService} from './services/charity-repository.service';
 import { EditProfileComponent } from './edit-profile/edit-profile.component';
-import {UserRepositoryService} from "./services/user-repository.service";
+import {UserRepositoryService} from './services/user-repository.service';
 
 @NgModule({
   declarations: [
@@ -28,7 +27,6 @@ import {UserRepositoryService} from "./services/user-repository.service";
     RegisterComponent,
     CreateCharityComponent,
     PageNotFoundComponent,
-    CharityViewComponent,
     HomePageComponent,
     DetailCharityViewComponent,
     MyProfilePageComponent,
@@ -49,6 +47,6 @@ import {UserRepositoryService} from "./services/user-repository.service";
   bootstrap: [AppComponent]
 })
 export class AppModule {
-  constructor(userRepositoryService: UserRepositoryService) {
+  constructor() {
   }
 }
